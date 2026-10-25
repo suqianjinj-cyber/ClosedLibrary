@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/box_prop.gd" id="1_prop"]
+[ext_resource type="Material" path="res://assets/materials/exit_sign.tres" id="2_mat"]
+
+[node name="ExitSign" type="StaticBody3D"]
+script = ExtResource("1_prop")
+boxes = Array[AABB]([AABB(-0.3, 0, -0.03, 0.6, 0.2, 0.06)])
+material = ExtResource("2_mat")
+has_collision = false

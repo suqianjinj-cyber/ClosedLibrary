@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSansTC.ttf" id="1_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_clear"]
+bg_color = Color(0, 0, 0, 0)
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_hover"]
+bg_color = Color(0.45, 0.03, 0.03, 0.25)
+border_width_left = 3
+border_color = Color(0.7, 0.08, 0.08, 1)
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+
+[resource]
+default_font = ExtResource("1_font")
+default_font_size = 22
+Button/colors/font_color = Color(0.7, 0.7, 0.67, 1)
+Button/colors/font_focus_color = Color(1, 0.88, 0.88, 1)
+Button/colors/font_hover_color = Color(1, 0.88, 0.88, 1)
+Button/colors/font_pressed_color = Color(1, 0.6, 0.6, 1)
+Button/styles/focus = SubResource("StyleBox_hover")
+Button/styles/hover = SubResource("StyleBox_hover")
+Button/styles/normal = SubResource("StyleBox_clear")
+Button/styles/pressed = SubResource("StyleBox_hover")

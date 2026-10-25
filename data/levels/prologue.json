@@ -1,0 +1,9 @@
+{
+	"_note": "草稿：教學關數值。clock_start 是手機上顯示的開始時間",
+	"clock_start": "21:47",
+	"battery_start": 64,
+	"battery_drain_per_minute": 0.4,
+	"battery_drain_live_multiplier": 2.5,
+	"signal_bars": 2,
+	"subtitle_delay": 1.2
+}

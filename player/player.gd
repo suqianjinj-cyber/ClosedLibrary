@@ -29,20 +29,25 @@ var is_crouching := false
 
 var _current_height := 0.0
 var _crouch_toggled := false
+var _current_interactable: Interactable = null
 
 @onready var _head: Node3D = $Head
 @onready var _collision: CollisionShape3D = $CollisionShape3D
 @onready var _capsule: CapsuleShape3D = _collision.shape
+@onready var _interact_ray: RayCast3D = $Head/InteractRay
 
 
 func _ready() -> void:
 	_current_height = stand_height
 	_apply_height()
+	_interact_ray.add_exception(self)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("interact") and _current_interactable:
+		_current_interactable.interact()
+	elif event.is_action_pressed("ui_cancel"):
 		# ESC：放開滑鼠
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event is InputEventMouseButton and event.pressed \
@@ -80,6 +85,17 @@ func _physics_process(delta: float) -> void:
 	velocity.z = move_toward(velocity.z, target_velocity.z, acceleration * delta)
 
 	move_and_slide()
+	_update_interaction()
+
+
+func _update_interaction() -> void:
+	# 準心前方 2 公尺內有可互動物件就顯示提示（牆壁會擋住）
+	var target: Interactable = null
+	if _interact_ray.is_colliding():
+		target = _interact_ray.get_collider() as Interactable
+	if target != _current_interactable:
+		_current_interactable = target
+		EventBus.interaction_prompt_changed.emit(target.prompt_text if target else "")
 
 
 func _update_crouch(delta: float) -> void:

@@ -1,119 +1,1014 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://player/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://levels/00_prologue/prologue_controller.gd" id="1_wsm0l"]
+[ext_resource type="Script" path="res://props/box_prop.gd" id="2_mtt8y"]
+[ext_resource type="Material" path="res://assets/materials/floor.tres" id="3_nnjdf"]
+[ext_resource type="Material" path="res://assets/materials/ceiling.tres" id="4_227nv"]
+[ext_resource type="Material" path="res://assets/materials/wall.tres" id="5_e25wx"]
+[ext_resource type="Material" path="res://assets/materials/glass.tres" id="6_eqf3s"]
+[ext_resource type="PackedScene" path="res://props/exit_sign/exit_sign.tscn" id="7_xqrr5"]
+[ext_resource type="Material" path="res://assets/materials/exit_sign.tres" id="8_14cn2"]
+[ext_resource type="PackedScene" path="res://props/column/column.tscn" id="9_o2wwp"]
+[ext_resource type="PackedScene" path="res://props/bookshelf/bookshelf.tscn" id="10_02nsm"]
+[ext_resource type="Script" path="res://props/bookshelf/bookshelf.gd" id="11_7yl50"]
+[ext_resource type="Material" path="res://assets/materials/wood.tres" id="12_3kfy4"]
+[ext_resource type="Material" path="res://assets/materials/books.tres" id="13_7sj83"]
+[ext_resource type="PackedScene" path="res://props/reading_table/reading_table.tscn" id="14_scpgo"]
+[ext_resource type="PackedScene" path="res://props/chair/chair.tscn" id="15_3aqyp"]
+[ext_resource type="PackedScene" path="res://props/counter/counter.tscn" id="16_ojdr3"]
+[ext_resource type="PackedScene" path="res://props/book_cart/book_cart.tscn" id="17_o7ljs"]
+[ext_resource type="Material" path="res://assets/materials/metal.tres" id="18_54sd2"]
+[ext_resource type="PackedScene" path="res://props/return_box/return_box.tscn" id="19_r1qd0"]
+[ext_resource type="PackedScene" path="res://props/security_gate/security_gate.tscn" id="20_rr5in"]
+[ext_resource type="PackedScene" path="res://props/locker/locker.tscn" id="21_jnuby"]
+[ext_resource type="PackedScene" path="res://props/ceiling_light/ceiling_light.tscn" id="22_qk5u5"]
+[ext_resource type="Script" path="res://props/ceiling_light/ceiling_light.gd" id="23_lmb07"]
+[ext_resource type="Material" path="res://assets/materials/light_on.tres" id="24_00sd6"]
+[ext_resource type="Material" path="res://assets/materials/light_off.tres" id="25_dmtu2"]
+[ext_resource type="Script" path="res://interaction/interactable.gd" id="26_1283l"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="27_pqv6p"]
+[ext_resource type="Script" path="res://player/player.gd" id="28_dfrie"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="29_qmh1l"]
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="30_f314c"]
+[ext_resource type="PackedScene" path="res://ui/stream_chat/stream_overlay.tscn" id="31_0jppo"]
+[ext_resource type="Script" path="res://ui/stream_chat/stream_overlay.gd" id="32_w28q5"]
 
-[sub_resource type="Environment" id="Environment_dim"]
+[sub_resource type="Environment" id="Environment_8gvhc"]
 background_mode = 1
-background_color = Color(0.02, 0.02, 0.03, 1)
+background_color = Color(0.01, 0.01, 0.015, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.55, 0.55, 0.6, 1)
-ambient_light_energy = 0.35
+ambient_light_color = Color(0.35, 0.4, 0.5, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.04, 0.05, 0.07, 1)
+fog_density = 0.035
 
-[sub_resource type="StandardMaterial3D" id="Mat_floor"]
-albedo_color = Color(0.32, 0.29, 0.26, 1)
-roughness = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_bws61"]
+size = Vector3(1.2, 1.6, 1.2)
 
-[sub_resource type="StandardMaterial3D" id="Mat_wall"]
-albedo_color = Color(0.55, 0.55, 0.52, 1)
-roughness = 1.0
+[node name="Prologue" type="Node3D" unique_id=1071311715]
+script = ExtResource("1_wsm0l")
 
-[sub_resource type="StandardMaterial3D" id="Mat_shelf"]
-albedo_color = Color(0.4, 0.27, 0.17, 1)
-roughness = 1.0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1949350851]
+environment = SubResource("Environment_8gvhc")
 
-[sub_resource type="StandardMaterial3D" id="Mat_counter"]
-albedo_color = Color(0.25, 0.3, 0.35, 1)
-roughness = 1.0
+[node name="Building" type="Node3D" parent="." unique_id=1416327218]
 
-[node name="Prologue" type="Node3D"]
+[node name="Floor" type="Node3D" parent="Building" unique_id=275740321]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dim")
+[node name="Floor_0_0" type="StaticBody3D" parent="Building/Floor" unique_id=560191688]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20, -0.2, -15, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="Lights" type="Node3D" parent="."]
+[node name="Floor_0_1" type="StaticBody3D" parent="Building/Floor" unique_id=355612163]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20, -0.2, -5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="CeilingLightWest" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.7, 0)
-light_color = Color(1, 0.95, 0.85, 1)
-omni_range = 8.0
+[node name="Floor_0_2" type="StaticBody3D" parent="Building/Floor" unique_id=1827965851]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20, -0.2, 5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="CeilingLightEast" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.7, 2)
-light_color = Color(1, 0.95, 0.85, 1)
-omni_range = 8.0
+[node name="Floor_1_0" type="StaticBody3D" parent="Building/Floor" unique_id=1287933551]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-10, -0.2, -15, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="Greybox" type="CSGCombiner3D" parent="."]
-use_collision = true
+[node name="Floor_1_1" type="StaticBody3D" parent="Building/Floor" unique_id=1656095418]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-10, -0.2, -5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="Floor" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-size = Vector3(16, 0.2, 12)
-material = SubResource("Mat_floor")
+[node name="Floor_1_2" type="StaticBody3D" parent="Building/Floor" unique_id=839912962]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-10, -0.2, 5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="Ceiling" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
-size = Vector3(16, 0.2, 12)
-material = SubResource("Mat_wall")
+[node name="Floor_2_0" type="StaticBody3D" parent="Building/Floor" unique_id=337981890]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(0, -0.2, -15, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="WallNorth" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -6.1)
-size = Vector3(16.4, 3.2, 0.2)
-material = SubResource("Mat_wall")
+[node name="Floor_2_1" type="StaticBody3D" parent="Building/Floor" unique_id=699790734]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(0, -0.2, -5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="WallSouth" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6.1)
-size = Vector3(16.4, 3.2, 0.2)
-material = SubResource("Mat_wall")
+[node name="Floor_2_2" type="StaticBody3D" parent="Building/Floor" unique_id=772917484]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(0, -0.2, 5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="WallEast" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 1.5, 0)
-size = Vector3(0.2, 3.2, 12.4)
-material = SubResource("Mat_wall")
+[node name="Floor_3_0" type="StaticBody3D" parent="Building/Floor" unique_id=422858227]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(10, -0.2, -15, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="WallWest" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 1.5, 0)
-size = Vector3(0.2, 3.2, 12.4)
-material = SubResource("Mat_wall")
+[node name="Floor_3_1" type="StaticBody3D" parent="Building/Floor" unique_id=1396300080]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(10, -0.2, -5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="Shelf1" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.1, -4)
-size = Vector3(5, 2.2, 0.5)
-material = SubResource("Mat_shelf")
+[node name="Floor_3_2" type="StaticBody3D" parent="Building/Floor" unique_id=1475453111]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(10, -0.2, 5, 10, 0.2, 10)])
+material = ExtResource("3_nnjdf")
 
-[node name="Shelf2" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.1, -2)
-size = Vector3(5, 2.2, 0.5)
-material = SubResource("Mat_shelf")
+[node name="Ceiling" type="Node3D" parent="Building" unique_id=1087494268]
 
-[node name="Shelf3" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.1, 0)
-size = Vector3(5, 2.2, 0.5)
-material = SubResource("Mat_shelf")
+[node name="Ceiling_0_0" type="StaticBody3D" parent="Building/Ceiling" unique_id=141495596]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20, 3.2, -15, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
 
-[node name="Shelf4" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.1, -4)
-size = Vector3(5, 2.2, 0.5)
-material = SubResource("Mat_shelf")
+[node name="Ceiling_0_1" type="StaticBody3D" parent="Building/Ceiling" unique_id=1283390692]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20, 3.2, -5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
 
-[node name="CounterTop" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.18, 2.5)
-size = Vector3(3, 0.12, 1.2)
-material = SubResource("Mat_counter")
+[node name="Ceiling_0_2" type="StaticBody3D" parent="Building/Ceiling" unique_id=1018467933]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20, 3.2, 5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
 
-[node name="CounterBack" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.56, 1.95)
-size = Vector3(3, 1.12, 0.1)
-material = SubResource("Mat_counter")
+[node name="Ceiling_1_0" type="StaticBody3D" parent="Building/Ceiling" unique_id=1941769866]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-10, 3.2, -15, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
 
-[node name="CounterSideWest" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 0.56, 2.5)
-size = Vector3(0.1, 1.12, 1.2)
-material = SubResource("Mat_counter")
+[node name="Ceiling_1_1" type="StaticBody3D" parent="Building/Ceiling" unique_id=174468183]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-10, 3.2, -5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
 
-[node name="CounterSideEast" type="CSGBox3D" parent="Greybox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45, 0.56, 2.5)
-size = Vector3(0.1, 1.12, 1.2)
-material = SubResource("Mat_counter")
+[node name="Ceiling_1_2" type="StaticBody3D" parent="Building/Ceiling" unique_id=1922030445]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-10, 3.2, 5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
 
-[node name="Player" parent="." instance=ExtResource("1_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+[node name="Ceiling_2_0" type="StaticBody3D" parent="Building/Ceiling" unique_id=2070150298]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(0, 3.2, -15, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
+
+[node name="Ceiling_2_1" type="StaticBody3D" parent="Building/Ceiling" unique_id=1094475440]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(0, 3.2, -5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
+
+[node name="Ceiling_2_2" type="StaticBody3D" parent="Building/Ceiling" unique_id=461638969]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(0, 3.2, 5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
+
+[node name="Ceiling_3_0" type="StaticBody3D" parent="Building/Ceiling" unique_id=261814101]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(10, 3.2, -15, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
+
+[node name="Ceiling_3_1" type="StaticBody3D" parent="Building/Ceiling" unique_id=572021777]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(10, 3.2, -5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
+
+[node name="Ceiling_3_2" type="StaticBody3D" parent="Building/Ceiling" unique_id=1950023992]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(10, 3.2, 5, 10, 0.2, 10)])
+material = ExtResource("4_227nv")
+has_collision = false
+
+[node name="Walls" type="Node3D" parent="Building" unique_id=1371051585]
+
+[node name="WallNorth" type="StaticBody3D" parent="Building/Walls" unique_id=1580226908]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20.3, 0, -15.3, 40.6, 3.2, 0.3)])
+material = ExtResource("5_e25wx")
+
+[node name="WallWest" type="StaticBody3D" parent="Building/Walls" unique_id=2014259136]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20.3, 0, -15.3, 0.3, 3.2, 30.6)])
+material = ExtResource("5_e25wx")
+
+[node name="WallEast" type="StaticBody3D" parent="Building/Walls" unique_id=28458240]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(20, 0, -15.3, 0.3, 3.2, 30.6)])
+material = ExtResource("5_e25wx")
+
+[node name="WallSouthWest" type="StaticBody3D" parent="Building/Walls" unique_id=1887139709]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-20.3, 0, 15, 18.3, 3.2, 0.3)])
+material = ExtResource("5_e25wx")
+
+[node name="WallSouthEast" type="StaticBody3D" parent="Building/Walls" unique_id=440916018]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(2, 0, 15, 18.3, 3.2, 0.3)])
+material = ExtResource("5_e25wx")
+
+[node name="WallAboveEntrance" type="StaticBody3D" parent="Building/Walls" unique_id=1451092468]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-2, 2.6, 15, 4, 0.6, 0.3)])
+material = ExtResource("5_e25wx")
+
+[node name="StaffWallWest" type="StaticBody3D" parent="Building/Walls" unique_id=1125583176]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(13, 0, 3, 0.2, 3.2, 3), AABB(13, 0, 7.2, 0.2, 3.2, 7.8), AABB(13, 2.2, 6, 0.2, 1, 1.2)])
+material = ExtResource("5_e25wx")
+
+[node name="StaffWallNorth" type="StaticBody3D" parent="Building/Walls" unique_id=1332626622]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(13.2, 0, 3, 6.8, 3.2, 0.2)])
+material = ExtResource("5_e25wx")
+
+[node name="EntranceGlass" type="StaticBody3D" parent="Building" unique_id=1468637744]
+script = ExtResource("2_mtt8y")
+boxes = Array[AABB]([AABB(-2, 0, 15.05, 4, 2.6, 0.1)])
+material = ExtResource("6_eqf3s")
+
+[node name="ExitSign" type="StaticBody3D" parent="Building" unique_id=1342066633 instance=ExtResource("7_xqrr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 14.9)
+boxes = Array[AABB]([AABB(-0.3, 0, -0.03, 0.6, 0.2, 0.06)])
+has_collision = false
+
+[node name="Columns" type="Node3D" parent="Building" unique_id=1629131717]
+
+[node name="Column1" type="StaticBody3D" parent="Building/Columns" unique_id=1365320891 instance=ExtResource("9_o2wwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 2)
+boxes = Array[AABB]([AABB(-0.3, 0, -0.3, 0.6, 3.2, 0.6)])
+
+[node name="Column2" type="StaticBody3D" parent="Building/Columns" unique_id=1446397190 instance=ExtResource("9_o2wwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2)
+boxes = Array[AABB]([AABB(-0.3, 0, -0.3, 0.6, 3.2, 0.6)])
+
+[node name="Column3" type="StaticBody3D" parent="Building/Columns" unique_id=1993512559 instance=ExtResource("9_o2wwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 9)
+boxes = Array[AABB]([AABB(-0.3, 0, -0.3, 0.6, 3.2, 0.6)])
+
+[node name="Column4" type="StaticBody3D" parent="Building/Columns" unique_id=292269284 instance=ExtResource("9_o2wwp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 9)
+boxes = Array[AABB]([AABB(-0.3, 0, -0.3, 0.6, 3.2, 0.6)])
+
+[node name="Stacks" type="Node3D" parent="." unique_id=887538245]
+
+[node name="Row1" type="Node3D" parent="Stacks" unique_id=1929318287]
+
+[node name="ShelfW1" type="StaticBody3D" parent="Stacks/Row1" unique_id=721514807 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -13)
+
+[node name="ShelfE1" type="StaticBody3D" parent="Stacks/Row1" unique_id=516476584 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)
+
+[node name="ShelfW2" type="StaticBody3D" parent="Stacks/Row1" unique_id=482459138 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
+
+[node name="ShelfE2" type="StaticBody3D" parent="Stacks/Row1" unique_id=904177700 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -13)
+
+[node name="ShelfW3" type="StaticBody3D" parent="Stacks/Row1" unique_id=479678216 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -13)
+
+[node name="ShelfE3" type="StaticBody3D" parent="Stacks/Row1" unique_id=361311695 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -13)
+
+[node name="ShelfW4" type="StaticBody3D" parent="Stacks/Row1" unique_id=1243839355 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -13)
+
+[node name="ShelfE4" type="StaticBody3D" parent="Stacks/Row1" unique_id=1427667698 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -13)
+
+[node name="ShelfW5" type="StaticBody3D" parent="Stacks/Row1" unique_id=986473386 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -13)
+
+[node name="ShelfE5" type="StaticBody3D" parent="Stacks/Row1" unique_id=1396737896 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -13)
+
+[node name="ShelfW6" type="StaticBody3D" parent="Stacks/Row1" unique_id=1571750310 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -13)
+
+[node name="ShelfE6" type="StaticBody3D" parent="Stacks/Row1" unique_id=2141651418 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -13)
+
+[node name="ShelfW7" type="StaticBody3D" parent="Stacks/Row1" unique_id=661216864 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -13)
+
+[node name="ShelfE7" type="StaticBody3D" parent="Stacks/Row1" unique_id=72305217 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -13)
+
+[node name="Row2" type="Node3D" parent="Stacks" unique_id=785014555]
+
+[node name="ShelfW1" type="StaticBody3D" parent="Stacks/Row2" unique_id=309224634 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -10.8)
+
+[node name="ShelfE1" type="StaticBody3D" parent="Stacks/Row2" unique_id=593367268 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -10.8)
+
+[node name="ShelfW2" type="StaticBody3D" parent="Stacks/Row2" unique_id=391631763 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -10.8)
+
+[node name="ShelfE2" type="StaticBody3D" parent="Stacks/Row2" unique_id=28626241 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10.8)
+
+[node name="ShelfW3" type="StaticBody3D" parent="Stacks/Row2" unique_id=787813134 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -10.8)
+
+[node name="ShelfE3" type="StaticBody3D" parent="Stacks/Row2" unique_id=1055987044 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10.8)
+
+[node name="ShelfW4" type="StaticBody3D" parent="Stacks/Row2" unique_id=1073071418 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -10.8)
+
+[node name="ShelfE4" type="StaticBody3D" parent="Stacks/Row2" unique_id=1209261095 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -10.8)
+
+[node name="ShelfW5" type="StaticBody3D" parent="Stacks/Row2" unique_id=1484501171 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -10.8)
+
+[node name="ShelfE5" type="StaticBody3D" parent="Stacks/Row2" unique_id=1208561937 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -10.8)
+
+[node name="ShelfW6" type="StaticBody3D" parent="Stacks/Row2" unique_id=404807537 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10.8)
+
+[node name="ShelfE6" type="StaticBody3D" parent="Stacks/Row2" unique_id=1696417142 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -10.8)
+
+[node name="ShelfW7" type="StaticBody3D" parent="Stacks/Row2" unique_id=859162488 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10.8)
+
+[node name="ShelfE7" type="StaticBody3D" parent="Stacks/Row2" unique_id=1383295123 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -10.8)
+
+[node name="Row3" type="Node3D" parent="Stacks" unique_id=562604017]
+
+[node name="ShelfW1" type="StaticBody3D" parent="Stacks/Row3" unique_id=407899088 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -8.6)
+
+[node name="ShelfE1" type="StaticBody3D" parent="Stacks/Row3" unique_id=1805644026 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8.6)
+
+[node name="ShelfW2" type="StaticBody3D" parent="Stacks/Row3" unique_id=374446677 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -8.6)
+
+[node name="ShelfE2" type="StaticBody3D" parent="Stacks/Row3" unique_id=113149560 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8.6)
+
+[node name="ShelfW3" type="StaticBody3D" parent="Stacks/Row3" unique_id=972138635 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -8.6)
+
+[node name="ShelfE3" type="StaticBody3D" parent="Stacks/Row3" unique_id=1989167299 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -8.6)
+
+[node name="ShelfW4" type="StaticBody3D" parent="Stacks/Row3" unique_id=748381929 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -8.6)
+
+[node name="ShelfE4" type="StaticBody3D" parent="Stacks/Row3" unique_id=2039130472 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -8.6)
+
+[node name="ShelfW5" type="StaticBody3D" parent="Stacks/Row3" unique_id=1487706588 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8.6)
+
+[node name="ShelfE5" type="StaticBody3D" parent="Stacks/Row3" unique_id=87487408 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -8.6)
+
+[node name="ShelfW6" type="StaticBody3D" parent="Stacks/Row3" unique_id=1451997410 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -8.6)
+
+[node name="ShelfE6" type="StaticBody3D" parent="Stacks/Row3" unique_id=419007525 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -8.6)
+
+[node name="ShelfW7" type="StaticBody3D" parent="Stacks/Row3" unique_id=1969230615 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8.6)
+
+[node name="ShelfE7" type="StaticBody3D" parent="Stacks/Row3" unique_id=1393975477 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -8.6)
+
+[node name="Row4" type="Node3D" parent="Stacks" unique_id=2137893272]
+
+[node name="ShelfW1" type="StaticBody3D" parent="Stacks/Row4" unique_id=641249709 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -6.4)
+
+[node name="ShelfE1" type="StaticBody3D" parent="Stacks/Row4" unique_id=248047149 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6.4)
+
+[node name="ShelfW2" type="StaticBody3D" parent="Stacks/Row4" unique_id=1683518748 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6.4)
+
+[node name="ShelfE2" type="StaticBody3D" parent="Stacks/Row4" unique_id=689964130 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6.4)
+
+[node name="ShelfW3" type="StaticBody3D" parent="Stacks/Row4" unique_id=1646835139 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -6.4)
+
+[node name="ShelfE3" type="StaticBody3D" parent="Stacks/Row4" unique_id=1191754562 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -6.4)
+
+[node name="ShelfW4" type="StaticBody3D" parent="Stacks/Row4" unique_id=989903321 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -6.4)
+
+[node name="ShelfE4" type="StaticBody3D" parent="Stacks/Row4" unique_id=481867819 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6.4)
+
+[node name="ShelfW5" type="StaticBody3D" parent="Stacks/Row4" unique_id=1247169405 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6.4)
+
+[node name="ShelfE5" type="StaticBody3D" parent="Stacks/Row4" unique_id=556049700 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -6.4)
+
+[node name="ShelfW6" type="StaticBody3D" parent="Stacks/Row4" unique_id=480209263 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6.4)
+
+[node name="ShelfE6" type="StaticBody3D" parent="Stacks/Row4" unique_id=1433998394 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -6.4)
+
+[node name="ShelfW7" type="StaticBody3D" parent="Stacks/Row4" unique_id=43224271 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6.4)
+
+[node name="ShelfE7" type="StaticBody3D" parent="Stacks/Row4" unique_id=1967166710 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -6.4)
+
+[node name="Row5" type="Node3D" parent="Stacks" unique_id=263500966]
+
+[node name="ShelfW1" type="StaticBody3D" parent="Stacks/Row5" unique_id=1956631391 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -4.2)
+
+[node name="ShelfE1" type="StaticBody3D" parent="Stacks/Row5" unique_id=1139374193 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4.2)
+
+[node name="ShelfW2" type="StaticBody3D" parent="Stacks/Row5" unique_id=1826243625 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -4.2)
+
+[node name="ShelfE2" type="StaticBody3D" parent="Stacks/Row5" unique_id=1188193280 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4.2)
+
+[node name="ShelfW3" type="StaticBody3D" parent="Stacks/Row5" unique_id=107613016 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -4.2)
+
+[node name="ShelfE3" type="StaticBody3D" parent="Stacks/Row5" unique_id=113585235 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -4.2)
+
+[node name="ShelfW4" type="StaticBody3D" parent="Stacks/Row5" unique_id=1100505007 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4.2)
+
+[node name="ShelfE4" type="StaticBody3D" parent="Stacks/Row5" unique_id=1521074847 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -4.2)
+
+[node name="ShelfW5" type="StaticBody3D" parent="Stacks/Row5" unique_id=544496562 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -4.2)
+
+[node name="ShelfE5" type="StaticBody3D" parent="Stacks/Row5" unique_id=1825986803 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -4.2)
+
+[node name="ShelfW6" type="StaticBody3D" parent="Stacks/Row5" unique_id=768331785 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4.2)
+
+[node name="ShelfE6" type="StaticBody3D" parent="Stacks/Row5" unique_id=1383818835 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -4.2)
+
+[node name="ShelfW7" type="StaticBody3D" parent="Stacks/Row5" unique_id=1295690486 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4.2)
+
+[node name="ShelfE7" type="StaticBody3D" parent="Stacks/Row5" unique_id=1108277864 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -4.2)
+
+[node name="Row6" type="Node3D" parent="Stacks" unique_id=1993509704]
+
+[node name="ShelfW1" type="StaticBody3D" parent="Stacks/Row6" unique_id=1235707930 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -2)
+
+[node name="ShelfE1" type="StaticBody3D" parent="Stacks/Row6" unique_id=1129044558 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="ShelfW2" type="StaticBody3D" parent="Stacks/Row6" unique_id=1984126524 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -2)
+
+[node name="ShelfE2" type="StaticBody3D" parent="Stacks/Row6" unique_id=1254325334 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+
+[node name="ShelfW3" type="StaticBody3D" parent="Stacks/Row6" unique_id=2128992158 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -2)
+
+[node name="ShelfE3" type="StaticBody3D" parent="Stacks/Row6" unique_id=1810243737 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2)
+
+[node name="ShelfW4" type="StaticBody3D" parent="Stacks/Row6" unique_id=489617808 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -2)
+
+[node name="ShelfE4" type="StaticBody3D" parent="Stacks/Row6" unique_id=1025772130 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2)
+
+[node name="ShelfW5" type="StaticBody3D" parent="Stacks/Row6" unique_id=1382477026 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+
+[node name="ShelfE5" type="StaticBody3D" parent="Stacks/Row6" unique_id=420371224 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -2)
+
+[node name="ShelfW6" type="StaticBody3D" parent="Stacks/Row6" unique_id=287393263 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
+
+[node name="ShelfE6" type="StaticBody3D" parent="Stacks/Row6" unique_id=1409317276 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2)
+
+[node name="ShelfW7" type="StaticBody3D" parent="Stacks/Row6" unique_id=392727509 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="ShelfE7" type="StaticBody3D" parent="Stacks/Row6" unique_id=146206782 instance=ExtResource("10_02nsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -2)
+
+[node name="ReadingArea" type="Node3D" parent="." unique_id=102418208]
+
+[node name="Table1" type="StaticBody3D" parent="ReadingArea" unique_id=1896673731 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 3.5)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table1ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=519173631 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9791868, 0, -0.20296125, 0, 1, 0, 0.20296125, 0, 0.9791868, -15.45, 0, 4.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table1ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=1801731445 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9939233, 0, 0.110074565, 0, 1, 0, -0.110074565, 0, -0.9939233, -15.45, 0, 2.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table1ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=1863274598 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.991106, 0, 0.1330751, 0, 1, 0, -0.1330751, 0, 0.991106, -14.55, 0, 4.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table1ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=1257462482 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9973104, 0, -0.07329356, 0, 1, 0, 0.07329356, 0, -0.9973104, -14.55, 0, 2.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table2" type="StaticBody3D" parent="ReadingArea" unique_id=1750279921 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 7)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table2ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=865827996 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9794125, 0, 0.20186904, 0, 1, 0, -0.20186904, 0, 0.9794125, -15.45, 0, 7.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table2ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=1106669255 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.99854827, 0, 0.053864535, 0, 1, 0, -0.053864535, 0, -0.99854827, -15.45, 0, 6.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table2ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=869322881 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.99354833, 0, -0.11340939, 0, 1, 0, 0.11340939, 0, 0.99354833, -14.55, 0, 7.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table2ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=1673220262 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.988438, 0, 0.15162545, 0, 1, 0, -0.15162545, 0, -0.988438, -14.55, 0, 6.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table3" type="StaticBody3D" parent="ReadingArea" unique_id=1755012110 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 10.5)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table3ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=1306187700 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9926738, 0, -0.12082503, 0, 1, 0, 0.12082503, 0, 0.9926738, -15.45, 0, 11.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table3ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=1237404445 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9997135, 0, 0.023935568, 0, 1, 0, -0.023935568, 0, -0.9997135, -15.45, 0, 9.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table3ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=302239394 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9935991, 0, -0.11296357, 0, 1, 0, 0.11296357, 0, 0.9935991, -14.55, 0, 11.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table3ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=1858130151 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9903401, 0, -0.13865934, 0, 1, 0, 0.13865934, 0, -0.9903401, -14.55, 0, 9.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table4" type="StaticBody3D" parent="ReadingArea" unique_id=226301714 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 3.5)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table4ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=466132205 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9995091, 0, 0.031330388, 0, 1, 0, -0.031330388, 0, 0.9995091, -11.45, 0, 4.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table4ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=1457275214 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9883125, 0, -0.15244167, 0, 1, 0, 0.15244167, 0, -0.9883125, -11.45, 0, 2.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table4ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=1562450060 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9812372, 0, 0.19280459, 0, 1, 0, -0.19280459, 0, 0.9812372, -10.55, 0, 4.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table4ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=706663601 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9788129, 0, 0.20475686, 0, 1, 0, -0.20475686, 0, -0.9788129, -10.55, 0, 2.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table5" type="StaticBody3D" parent="ReadingArea" unique_id=1400961954 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 7)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table5ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=1958582903 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.98003304, 0, -0.19883461, 0, 1, 0, 0.19883461, 0, 0.98003304, -11.45, 0, 7.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table5ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=1108269811 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9914307, 0, -0.1306338, 0, 1, 0, 0.1306338, 0, -0.9914307, -11.45, 0, 6.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table5ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=711758394 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9984572, 0, 0.055526666, 0, 1, 0, -0.055526666, 0, 0.9984572, -10.55, 0, 7.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table5ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=1223032912 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.97906417, 0, -0.20355177, 0, 1, 0, 0.20355177, 0, -0.97906417, -10.55, 0, 6.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table6" type="StaticBody3D" parent="ReadingArea" unique_id=1650505103 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 10.5)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table6ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=927302996 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.98854965, 0, 0.1508959, 0, 1, 0, -0.1508959, 0, 0.98854965, -11.45, 0, 11.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table6ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=2021676272 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9994282, 0, -0.03381141, 0, 1, 0, 0.03381141, 0, -0.9994282, -11.45, 0, 9.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table6ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=1866366199 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.999723, 0, 0.023534494, 0, 1, 0, -0.023534494, 0, 0.999723, -10.55, 0, 11.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table6ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=2064056244 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9989078, 0, -0.046724316, 0, 1, 0, 0.046724316, 0, -0.9989078, -10.55, 0, 9.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table7" type="StaticBody3D" parent="ReadingArea" unique_id=174346763 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3.5)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table7ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=252854617 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9782286, 0, -0.2075301, 0, 1, 0, 0.2075301, 0, 0.9782286, -7.45, 0, 4.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table7ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=363880379 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9948059, 0, 0.101790644, 0, 1, 0, -0.101790644, 0, -0.9948059, -7.45, 0, 2.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table7ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=128414141 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9960704, 0, -0.088565156, 0, 1, 0, 0.088565156, 0, 0.9960704, -6.55, 0, 4.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table7ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=1345104620 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9877814, 0, 0.1558457, 0, 1, 0, -0.1558457, 0, -0.9877814, -6.55, 0, 2.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table8" type="StaticBody3D" parent="ReadingArea" unique_id=765880017 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table8ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=1839491617 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9926244, 0, -0.12123044, 0, 1, 0, 0.12123044, 0, 0.9926244, -7.45, 0, 7.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table8ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=316382886 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9794, 0, 0.20192993, 0, 1, 0, -0.20192993, 0, -0.9794, -7.45, 0, 6.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table8ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=1373065350 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9918676, 0, 0.12727384, 0, 1, 0, -0.12727384, 0, 0.9918676, -6.55, 0, 7.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table8ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=789923664 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.990089, 0, -0.14044155, 0, 1, 0, 0.14044155, 0, -0.990089, -6.55, 0, 6.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table9" type="StaticBody3D" parent="ReadingArea" unique_id=72786446 instance=ExtResource("14_scpgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 10.5)
+boxes = Array[AABB]([AABB(-0.9, 0.72, -0.45, 1.8, 0.04, 0.9), AABB(-0.86, 0, -0.4, 0.04, 0.72, 0.8), AABB(0.82, 0, -0.4, 0.04, 0.72, 0.8), AABB(-0.82, 0.55, -0.02, 1.64, 0.12, 0.04)])
+
+[node name="Table9ChairS1" type="StaticBody3D" parent="ReadingArea" unique_id=418819104 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.99444133, 0, 0.10529238, 0, 1, 0, -0.10529238, 0, 0.99444133, -7.45, 0, 11.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table9ChairN1" type="StaticBody3D" parent="ReadingArea" unique_id=1655505647 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9911294, 0, 0.13290037, 0, 1, 0, -0.13290037, 0, -0.9911294, -7.45, 0, 9.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table9ChairS2" type="StaticBody3D" parent="ReadingArea" unique_id=1526899668 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(0.9967577, 0, -0.08046164, 0, 1, 0, 0.08046164, 0, 0.9967577, -6.55, 0, 11.25)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="Table9ChairN2" type="StaticBody3D" parent="ReadingArea" unique_id=1688151286 instance=ExtResource("15_3aqyp")]
+transform = Transform3D(-0.9980617, 0, -0.06223192, 0, 1, 0, 0.06223192, 0, -0.9980617, -6.55, 0, 9.75)
+boxes = Array[AABB]([AABB(-0.22, 0.43, -0.22, 0.44, 0.04, 0.44), AABB(-0.22, 0.47, 0.19, 0.44, 0.42, 0.03), AABB(-0.21, 0, -0.21, 0.03, 0.43, 0.03), AABB(0.18, 0, -0.21, 0.03, 0.43, 0.03), AABB(-0.21, 0, 0.18, 0.03, 0.43, 0.03), AABB(0.18, 0, 0.18, 0.03, 0.43, 0.03)])
+
+[node name="FrontDesk" type="Node3D" parent="." unique_id=1716127196]
+
+[node name="CirculationCounter" type="StaticBody3D" parent="FrontDesk" unique_id=396412934 instance=ExtResource("16_ojdr3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7, 0, 9)
+boxes = Array[AABB]([AABB(-1.5, 1.12, -0.6, 3, 0.08, 1.2), AABB(-1.5, 0, -0.6, 3, 1.12, 0.08), AABB(-1.5, 0, -0.6, 0.08, 1.12, 1.2), AABB(1.42, 0, -0.6, 0.08, 1.12, 1.2)])
+
+[node name="BookCart" type="StaticBody3D" parent="FrontDesk" unique_id=881582416 instance=ExtResource("17_o7ljs")]
+transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, 9.6, 0, 10.6)
+boxes = Array[AABB]([AABB(-0.45, 0.12, -0.25, 0.9, 0.03, 0.5), AABB(-0.45, 0.5, -0.25, 0.9, 0.03, 0.5), AABB(-0.45, 0.88, -0.25, 0.9, 0.03, 0.5), AABB(-0.45, 0.05, -0.25, 0.03, 0.95, 0.5), AABB(0.42, 0.05, -0.25, 0.03, 0.95, 0.5)])
+
+[node name="ReturnBox" type="StaticBody3D" parent="FrontDesk" unique_id=778288623 instance=ExtResource("19_r1qd0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, 14.5)
+boxes = Array[AABB]([AABB(-0.4, 0, -0.3, 0.8, 0.9, 0.6), AABB(-0.4, 0.94, -0.3, 0.8, 0.16, 0.6), AABB(-0.4, 0.9, 0.1, 0.8, 0.04, 0.2)])
+
+[node name="SecurityGate1" type="StaticBody3D" parent="FrontDesk" unique_id=69406650 instance=ExtResource("20_rr5in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 12.5)
+boxes = Array[AABB]([AABB(-0.08, 0, -0.4, 0.16, 1, 0.8)])
+
+[node name="SecurityGate2" type="StaticBody3D" parent="FrontDesk" unique_id=1317995275 instance=ExtResource("20_rr5in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5)
+boxes = Array[AABB]([AABB(-0.08, 0, -0.4, 0.16, 1, 0.8)])
+
+[node name="SecurityGate3" type="StaticBody3D" parent="FrontDesk" unique_id=1441772309 instance=ExtResource("20_rr5in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 12.5)
+boxes = Array[AABB]([AABB(-0.08, 0, -0.4, 0.16, 1, 0.8)])
+
+[node name="StaffArea" type="Node3D" parent="." unique_id=618768112]
+
+[node name="Locker1" type="StaticBody3D" parent="StaffArea" unique_id=834446224 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 4.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker2" type="StaticBody3D" parent="StaffArea" unique_id=1988703002 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 5.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker3" type="StaticBody3D" parent="StaffArea" unique_id=450267139 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 6.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker4" type="StaticBody3D" parent="StaffArea" unique_id=1631782102 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 7.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker5" type="StaticBody3D" parent="StaffArea" unique_id=227771637 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 8.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker6" type="StaticBody3D" parent="StaffArea" unique_id=1538591414 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 9.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker7" type="StaticBody3D" parent="StaffArea" unique_id=730963091 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 10.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="Locker8" type="StaticBody3D" parent="StaffArea" unique_id=1730554898 instance=ExtResource("21_jnuby")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.65, 0, 11.2)
+boxes = Array[AABB]([AABB(-0.45, 0, -0.25, 0.9, 1.9, 0.5)])
+
+[node name="CeilingLights" type="Node3D" parent="." unique_id=1370579196]
+
+[node name="Light_-18_-13" type="Node3D" parent="CeilingLights" unique_id=1078516053 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, -13)
+
+[node name="Light_-18_-9" type="Node3D" parent="CeilingLights" unique_id=693400808 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, -9)
+
+[node name="Light_-18_-5" type="Node3D" parent="CeilingLights" unique_id=1686469989 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, -5)
+
+[node name="Light_-18_-1" type="Node3D" parent="CeilingLights" unique_id=723105148 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, -1)
+
+[node name="Light_-18_3" type="Node3D" parent="CeilingLights" unique_id=1328657928 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, 3)
+
+[node name="Light_-18_7" type="Node3D" parent="CeilingLights" unique_id=54494990 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, 7)
+
+[node name="Light_-18_11" type="Node3D" parent="CeilingLights" unique_id=323873256 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.18, 11)
+
+[node name="Light_-14_-13" type="Node3D" parent="CeilingLights" unique_id=901849413 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, -13)
+
+[node name="Light_-14_-9" type="Node3D" parent="CeilingLights" unique_id=1186679335 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, -9)
+
+[node name="Light_-14_-5" type="Node3D" parent="CeilingLights" unique_id=1210119822 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, -5)
+
+[node name="Light_-14_-1" type="Node3D" parent="CeilingLights" unique_id=256244333 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, -1)
+
+[node name="Light_-14_3" type="Node3D" parent="CeilingLights" unique_id=157604041 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, 3)
+
+[node name="Light_-14_7" type="Node3D" parent="CeilingLights" unique_id=611797786 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, 7)
+lit = true
+
+[node name="Light_-14_11" type="Node3D" parent="CeilingLights" unique_id=2030552019 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 3.18, 11)
+
+[node name="Light_-10_-13" type="Node3D" parent="CeilingLights" unique_id=1467425891 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, -13)
+
+[node name="Light_-10_-9" type="Node3D" parent="CeilingLights" unique_id=1169620285 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, -9)
+lit = true
+flicker = true
+
+[node name="Light_-10_-5" type="Node3D" parent="CeilingLights" unique_id=1225421459 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, -5)
+
+[node name="Light_-10_-1" type="Node3D" parent="CeilingLights" unique_id=935395693 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, -1)
+
+[node name="Light_-10_3" type="Node3D" parent="CeilingLights" unique_id=218122337 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, 3)
+
+[node name="Light_-10_7" type="Node3D" parent="CeilingLights" unique_id=2014769173 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, 7)
+
+[node name="Light_-10_11" type="Node3D" parent="CeilingLights" unique_id=1262763988 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.18, 11)
+
+[node name="Light_-6_-13" type="Node3D" parent="CeilingLights" unique_id=284045528 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, -13)
+
+[node name="Light_-6_-9" type="Node3D" parent="CeilingLights" unique_id=981374746 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, -9)
+
+[node name="Light_-6_-5" type="Node3D" parent="CeilingLights" unique_id=1333946089 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, -5)
+
+[node name="Light_-6_-1" type="Node3D" parent="CeilingLights" unique_id=256608517 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, -1)
+
+[node name="Light_-6_3" type="Node3D" parent="CeilingLights" unique_id=1359534043 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, 3)
+lit = true
+
+[node name="Light_-6_7" type="Node3D" parent="CeilingLights" unique_id=1462975311 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, 7)
+
+[node name="Light_-6_11" type="Node3D" parent="CeilingLights" unique_id=728601512 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.18, 11)
+
+[node name="Light_-2_-13" type="Node3D" parent="CeilingLights" unique_id=257022728 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, -13)
+
+[node name="Light_-2_-9" type="Node3D" parent="CeilingLights" unique_id=113350790 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, -9)
+
+[node name="Light_-2_-5" type="Node3D" parent="CeilingLights" unique_id=1992907413 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, -5)
+lit = true
+flicker = true
+
+[node name="Light_-2_-1" type="Node3D" parent="CeilingLights" unique_id=1604981390 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, -1)
+
+[node name="Light_-2_3" type="Node3D" parent="CeilingLights" unique_id=1723558966 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, 3)
+
+[node name="Light_-2_7" type="Node3D" parent="CeilingLights" unique_id=2055062330 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, 7)
+
+[node name="Light_-2_11" type="Node3D" parent="CeilingLights" unique_id=1155450592 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.18, 11)
+
+[node name="Light_2_-13" type="Node3D" parent="CeilingLights" unique_id=285324031 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, -13)
+
+[node name="Light_2_-9" type="Node3D" parent="CeilingLights" unique_id=267448428 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, -9)
+
+[node name="Light_2_-5" type="Node3D" parent="CeilingLights" unique_id=152194430 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, -5)
+
+[node name="Light_2_-1" type="Node3D" parent="CeilingLights" unique_id=1715393239 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, -1)
+
+[node name="Light_2_3" type="Node3D" parent="CeilingLights" unique_id=273778096 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, 3)
+
+[node name="Light_2_7" type="Node3D" parent="CeilingLights" unique_id=1113899566 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, 7)
+
+[node name="Light_2_11" type="Node3D" parent="CeilingLights" unique_id=691947414 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.18, 11)
+lit = true
+
+[node name="Light_6_-13" type="Node3D" parent="CeilingLights" unique_id=1007403338 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, -13)
+
+[node name="Light_6_-9" type="Node3D" parent="CeilingLights" unique_id=1269874103 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, -9)
+
+[node name="Light_6_-5" type="Node3D" parent="CeilingLights" unique_id=1817806512 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, -5)
+
+[node name="Light_6_-1" type="Node3D" parent="CeilingLights" unique_id=717537310 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, -1)
+
+[node name="Light_6_3" type="Node3D" parent="CeilingLights" unique_id=1816556195 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, 3)
+
+[node name="Light_6_7" type="Node3D" parent="CeilingLights" unique_id=594042596 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, 7)
+lit = true
+
+[node name="Light_6_11" type="Node3D" parent="CeilingLights" unique_id=1546917931 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.18, 11)
+
+[node name="Light_10_-13" type="Node3D" parent="CeilingLights" unique_id=2130386832 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, -13)
+
+[node name="Light_10_-9" type="Node3D" parent="CeilingLights" unique_id=2035412328 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, -9)
+
+[node name="Light_10_-5" type="Node3D" parent="CeilingLights" unique_id=849170244 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, -5)
+
+[node name="Light_10_-1" type="Node3D" parent="CeilingLights" unique_id=1766326854 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, -1)
+
+[node name="Light_10_3" type="Node3D" parent="CeilingLights" unique_id=901262674 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, 3)
+
+[node name="Light_10_7" type="Node3D" parent="CeilingLights" unique_id=488102244 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, 7)
+
+[node name="Light_10_11" type="Node3D" parent="CeilingLights" unique_id=1607954406 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.18, 11)
+
+[node name="Light_14_-13" type="Node3D" parent="CeilingLights" unique_id=1887404557 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, -13)
+
+[node name="Light_14_-9" type="Node3D" parent="CeilingLights" unique_id=294328104 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, -9)
+lit = true
+
+[node name="Light_14_-5" type="Node3D" parent="CeilingLights" unique_id=527118257 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, -5)
+
+[node name="Light_14_-1" type="Node3D" parent="CeilingLights" unique_id=2067412536 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, -1)
+
+[node name="Light_14_3" type="Node3D" parent="CeilingLights" unique_id=2131072715 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, 3)
+
+[node name="Light_14_7" type="Node3D" parent="CeilingLights" unique_id=1070674947 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, 7)
+
+[node name="Light_14_11" type="Node3D" parent="CeilingLights" unique_id=1032157194 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.18, 11)
+
+[node name="Light_18_-13" type="Node3D" parent="CeilingLights" unique_id=398390843 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, -13)
+
+[node name="Light_18_-9" type="Node3D" parent="CeilingLights" unique_id=614554422 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, -9)
+
+[node name="Light_18_-5" type="Node3D" parent="CeilingLights" unique_id=76031154 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, -5)
+
+[node name="Light_18_-1" type="Node3D" parent="CeilingLights" unique_id=122330576 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, -1)
+
+[node name="Light_18_3" type="Node3D" parent="CeilingLights" unique_id=2075616292 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, 3)
+
+[node name="Light_18_7" type="Node3D" parent="CeilingLights" unique_id=1272895296 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, 7)
+lit = true
+
+[node name="Light_18_11" type="Node3D" parent="CeilingLights" unique_id=1061564007 instance=ExtResource("22_qk5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 3.18, 11)
+
+[node name="BroadcastCorner" type="Node3D" parent="." unique_id=165798978]
+
+[node name="OldBookCart" type="StaticBody3D" parent="BroadcastCorner" unique_id=1167324073 instance=ExtResource("17_o7ljs")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -18.6, 0, -14.4)
+boxes = Array[AABB]([AABB(-0.45, 0.12, -0.25, 0.9, 0.03, 0.5), AABB(-0.45, 0.5, -0.25, 0.9, 0.03, 0.5), AABB(-0.45, 0.88, -0.25, 0.9, 0.03, 0.5), AABB(-0.45, 0.05, -0.25, 0.03, 0.95, 0.5), AABB(0.42, 0.05, -0.25, 0.03, 0.95, 0.5)])
+
+[node name="BroadcastSpot" type="Area3D" parent="." unique_id=116521232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6, 0.8, -14.2)
+script = ExtResource("26_1283l")
+prompt_text = "按 E 開始直播"
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BroadcastSpot" unique_id=265709584]
+shape = SubResource("BoxShape3D_bws61")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=472433978 instance=ExtResource("27_pqv6p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14, 0, -11.9)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1284224754 instance=ExtResource("29_qmh1l")]
+
+[node name="StreamOverlay" type="CanvasLayer" parent="." unique_id=23643070 instance=ExtResource("31_0jppo")]
