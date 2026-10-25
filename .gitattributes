@@ -1,0 +1,13 @@
+# 統一使用 LF 換行，避免 Windows 與 GitHub 之間出現整份檔案都「被修改」的情況
+* text=auto eol=lf
+
+# 二進位素材不做換行轉換
+*.png binary
+*.jpg binary
+*.glb binary
+*.fbx binary
+*.wav binary
+*.ogg binary
+*.mp3 binary
+*.ttf binary
+*.otf binary

@@ -1,0 +1,14 @@
+# Godot 4 快取（每台電腦自動產生，不要上傳）
+.godot/
+/android/
+
+# 匯出的遊戲執行檔
+/build/
+*.exe
+*.pck
+
+# 系統與編輯器暫存檔
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
