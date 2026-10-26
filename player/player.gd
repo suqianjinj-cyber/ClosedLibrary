@@ -26,6 +26,9 @@ extends CharacterBody3D
 
 var is_running := false
 var is_crouching := false
+## 手機手電筒是否開著（館員 AI 會讀取：開著比較容易被發現）
+var flashlight_on := false
+var _battery_empty := false
 
 var _current_height := 0.0
 var _crouch_toggled := false
@@ -35,18 +38,36 @@ var _current_interactable: Interactable = null
 @onready var _collision: CollisionShape3D = $CollisionShape3D
 @onready var _capsule: CapsuleShape3D = _collision.shape
 @onready var _interact_ray: RayCast3D = $Head/InteractRay
+@onready var _flashlight: SpotLight3D = $Head/Flashlight
 
 
 func _ready() -> void:
 	_current_height = stand_height
 	_apply_height()
 	_interact_ray.add_exception(self)
+	_flashlight.visible = false
+	EventBus.battery_depleted.connect(_on_battery_depleted)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func set_flashlight(on: bool) -> void:
+	if on and _battery_empty:
+		return
+	flashlight_on = on
+	_flashlight.visible = on
+	EventBus.flashlight_toggled.emit(on)
+
+
+func _on_battery_depleted() -> void:
+	_battery_empty = true
+	set_flashlight(false)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and _current_interactable:
 		_current_interactable.interact()
+	elif event.is_action_pressed("flashlight"):
+		set_flashlight(not flashlight_on)
 	elif event.is_action_pressed("ui_cancel"):
 		# ESC：放開滑鼠
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

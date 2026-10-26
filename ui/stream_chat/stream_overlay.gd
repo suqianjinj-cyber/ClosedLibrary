@@ -15,6 +15,7 @@ var _chat: Dictionary = {}
 var _clock_minutes := 0.0  # 從午夜起算的分鐘數
 var _viewers := 0
 var _filler_timer := 0.0
+var _flashlight_on := false
 
 @onready var _live_badge: Label = %LiveBadge
 @onready var _viewers_label: Label = %Viewers
@@ -37,9 +38,11 @@ func _ready() -> void:
 	_clock_minutes = int(hm[0]) * 60 + int(hm[1])
 	_set_signal(int(_level.get("signal_bars", 3)))
 	_set_live_visuals(false)
+	visible = false  # 開始直播時才顯示手機介面
 
 	EventBus.stream_started.connect(_on_stream_started)
 	EventBus.chat_message_posted.connect(_add_message)
+	EventBus.flashlight_toggled.connect(func(on: bool) -> void: _flashlight_on = on)
 
 
 func _process(delta: float) -> void:
@@ -47,7 +50,12 @@ func _process(delta: float) -> void:
 	var drain := float(_level.get("battery_drain_per_minute", 0.4)) / 60.0 * delta
 	if is_live:
 		drain *= float(_level.get("battery_drain_live_multiplier", 2.0))
+	if _flashlight_on:
+		drain *= float(_level.get("battery_drain_flashlight_multiplier", 2.0))
+	var was_empty := battery <= 0.0
 	battery = maxf(battery - drain, 0.0)
+	if battery <= 0.0 and not was_empty:
+		EventBus.battery_depleted.emit()
 
 	var total := int(_clock_minutes) % (24 * 60)
 	_clock_label.text = "%02d:%02d" % [total / 60, total % 60]
@@ -61,6 +69,7 @@ func _on_stream_started() -> void:
 	if is_live:
 		return
 	is_live = true
+	visible = true
 	_viewers = int(_chat.get("viewers_start", 10))
 	_set_live_visuals(true)
 	for entry in _chat.get("scripted", []):

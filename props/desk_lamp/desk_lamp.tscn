@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/desk_lamp/desk_lamp.gd" id="0_lamp"]
+[ext_resource type="Material" path="res://assets/materials/metal.tres" id="1_metal"]
+[ext_resource type="Material" path="res://assets/materials/lamp_on.tres" id="2_lamp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_base"]
+size = Vector3(0.16, 0.02, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_stem"]
+size = Vector3(0.02, 0.32, 0.02)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shade"]
+size = Vector3(0.26, 0.08, 0.16)
+
+[node name="DeskLamp" type="Node3D"]
+script = ExtResource("0_lamp")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("BoxMesh_base")
+surface_material_override/0 = ExtResource("1_metal")
+
+[node name="Stem" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
+mesh = SubResource("BoxMesh_stem")
+surface_material_override/0 = ExtResource("1_metal")
+
+[node name="Shade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+mesh = SubResource("BoxMesh_shade")
+surface_material_override/0 = ExtResource("2_lamp")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+light_color = Color(1, 0.78, 0.5, 1)
+light_energy = 0.9
+omni_range = 2.8

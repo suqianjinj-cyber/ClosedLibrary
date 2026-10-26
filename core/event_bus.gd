@@ -13,3 +13,9 @@ signal stream_started
 
 ## 送出一則彈幕到直播畫面
 signal chat_message_posted(user: String, text: String)
+
+## 玩家的手機手電筒開關
+signal flashlight_toggled(on: bool)
+
+## 手機沒電
+signal battery_depleted

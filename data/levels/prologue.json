@@ -4,6 +4,7 @@
 	"battery_start": 64,
 	"battery_drain_per_minute": 0.4,
 	"battery_drain_live_multiplier": 2.5,
+	"battery_drain_flashlight_multiplier": 3.0,
 	"signal_bars": 2,
 	"subtitle_delay": 1.2
 }

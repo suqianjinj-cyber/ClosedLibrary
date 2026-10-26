@@ -22,6 +22,16 @@ current = true
 fov = 75.0
 near = 0.05
 
+[node name="Flashlight" type="SpotLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.15, -0.1)
+visible = false
+light_color = Color(0.95, 0.97, 1, 1)
+light_energy = 3.0
+spot_range = 12.0
+spot_attenuation = 1.0
+spot_angle = 24.0
+spot_angle_attenuation = 1.6
+
 [node name="InteractRay" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
