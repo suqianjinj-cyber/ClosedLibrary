@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/book_pile/book_pile.gd" id="1_pile"]
+[ext_resource type="Material" path="res://assets/materials/books.tres" id="2_books"]
+
+[node name="BookPile" type="Node3D"]
+script = ExtResource("1_pile")
+book_material = ExtResource("2_books")

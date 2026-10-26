@@ -35,15 +35,15 @@ func _run() -> void:
 	await _frames(60)
 	_check("站在地上", player.is_on_floor() and absf(player.global_position.y) < 0.05, str(player.global_position))
 
-	# 起點在東北側書庫走道，面向西（-x）
-	await _place(Vector3(14, 0, -11.9), 90)
+	# 起點在東北角密集書庫的走道，面向南（+z）
+	await _place(Vector3(14.1, 0, -12), 180)
 	var start := player.global_position
 	Input.action_press("move_forward"); await _frames(60); Input.action_release("move_forward")
 	await _frames(30)
 	var walk_dist := start.distance_to(player.global_position)
 	_check("走路 1 秒約 2~2.8 公尺", walk_dist > 2.0 and walk_dist < 2.8, "%.2f" % walk_dist)
 
-	await _place(Vector3(14, 0, -11.9), 90)
+	await _place(Vector3(14.1, 0, -12), 180)
 	start = player.global_position
 	Input.action_press("move_forward"); Input.action_press("run"); await _frames(30)
 	_check("奔跑中 is_running", player.is_running)
@@ -55,12 +55,12 @@ func _run() -> void:
 	await _place(Vector3(-17, 0, -11.9), 90)
 	Input.action_press("move_forward"); await _frames(60 * 3); Input.action_release("move_forward")
 	await _frames(20)
-	_check("不會穿過西牆", player.global_position.x > -20.0, "x=%.2f" % player.global_position.x)
+	_check("不會穿過西側牆面書架", player.global_position.x > -20.0, "x=%.2f" % player.global_position.x)
 
-	await _place(Vector3(14, 0, -11.9), 0)  # 面向北邊的書架
+	await _place(Vector3(14.1, 0, -12), 90)  # 面向西邊的書架
 	Input.action_press("move_forward"); await _frames(60 * 2); Input.action_release("move_forward")
 	await _frames(20)
-	_check("不會穿過書架", player.global_position.z > -12.7, "z=%.2f" % player.global_position.z)
+	_check("不會穿過書架", player.global_position.x > 13.3, "x=%.2f" % player.global_position.x)
 
 	# 服務櫃檯（中心 7, 9），開口朝北
 	var head: Node3D = player.get_node("Head")

@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/box_prop.gd" id="1_prop"]
+[ext_resource type="Material" path="res://assets/materials/wood.tres" id="2_mat"]
+
+[node name="OfficeDesk" type="StaticBody3D"]
+script = ExtResource("1_prop")
+boxes = Array[AABB]([AABB(-0.7, 0.72, -0.35, 1.4, 0.04, 0.7), AABB(-0.7, 0, -0.35, 0.45, 0.72, 0.7), AABB(0.66, 0, -0.35, 0.04, 0.72, 0.7)])
+material = ExtResource("2_mat")
+has_collision = true

@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/box_prop.gd" id="1_prop"]
+[ext_resource type="Material" path="res://assets/materials/cardboard.tres" id="2_mat"]
+
+[node name="CardboardBox" type="StaticBody3D"]
+script = ExtResource("1_prop")
+boxes = Array[AABB]([AABB(-0.25, 0, -0.2, 0.5, 0.4, 0.4)])
+material = ExtResource("2_mat")
+has_collision = true

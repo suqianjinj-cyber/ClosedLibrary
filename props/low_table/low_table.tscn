@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/box_prop.gd" id="1_prop"]
+[ext_resource type="Material" path="res://assets/materials/wood.tres" id="2_mat"]
+
+[node name="LowTable" type="StaticBody3D"]
+script = ExtResource("1_prop")
+boxes = Array[AABB]([AABB(-0.5, 0.38, -0.3, 1, 0.04, 0.6), AABB(-0.48, 0, -0.28, 0.04, 0.38, 0.56), AABB(0.44, 0, -0.28, 0.04, 0.38, 0.56)])
+material = ExtResource("2_mat")
+has_collision = true

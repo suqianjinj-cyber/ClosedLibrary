@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://props/box_prop.gd" id="1_prop"]
+[ext_resource type="Material" path="res://assets/materials/wood.tres" id="2_mat"]
+
+[node name="StudyCarrel" type="StaticBody3D"]
+script = ExtResource("1_prop")
+boxes = Array[AABB]([AABB(-0.5, 0.72, -0.3, 1, 0.03, 0.6), AABB(-0.5, 0, -0.3, 0.03, 1.2, 0.6), AABB(0.47, 0, -0.3, 0.03, 1.2, 0.6), AABB(-0.47, 0.75, -0.3, 0.94, 0.45, 0.03)])
+material = ExtResource("2_mat")
+has_collision = true

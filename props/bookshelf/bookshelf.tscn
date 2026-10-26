@@ -4,14 +4,7 @@
 [ext_resource type="Material" path="res://assets/materials/wood.tres" id="2_wood"]
 [ext_resource type="Material" path="res://assets/materials/books.tres" id="3_books"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_shelf"]
-size = Vector3(2, 2.2, 0.6)
-
 [node name="Bookshelf" type="StaticBody3D"]
 script = ExtResource("1_shelf")
 frame_material = ExtResource("2_wood")
 book_material = ExtResource("3_books")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_shelf")

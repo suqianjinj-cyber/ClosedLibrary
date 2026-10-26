@@ -14,6 +14,8 @@ extends StaticBody3D
 		material = value
 		_rebuild()
 @export var has_collision := true
+## 勾選後會遮擋後方物件（牆壁用），被擋住的東西不會畫出來，節省效能
+@export var occlude := false
 
 
 func _ready() -> void:
@@ -43,6 +45,16 @@ func _rebuild() -> void:
 			collision.position = box.get_center()
 			collision.set_meta("generated", true)
 			add_child(collision)
+
+	if occlude:
+		for box in boxes:
+			var shape := BoxOccluder3D.new()
+			shape.size = box.size
+			var occluder := OccluderInstance3D.new()
+			occluder.occluder = shape
+			occluder.position = box.get_center()
+			occluder.set_meta("generated", true)
+			add_child(occluder)
 
 
 ## 把多個方塊合併成一個網格，減少繪製次數（對文書筆電比較友善）
